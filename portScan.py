@@ -14,7 +14,8 @@ def verificarPortas(host, portaInicio, portaFinal):
             sock.settimeout(2)
             conexao = sock.connect_ex((host, porta))
             if(conexao == 0):
-                print(green+'Porta {} esta aberta.'.format(porta)+white)
+                servico = socket.getservbyport(porta)
+                print(green+'Porta {} esta aberta. Serviço: {}'.format(porta, servico)+white)
                 portasAbertas = portasAbertas + 1
            # else:
                 #print(erro+'Porta {} esta fechada.'.format(porta)+white)
@@ -31,7 +32,8 @@ def verificarPortaEspecifica(host, porta):
         sock.settimeout(3)
         conexao = sock.connect_ex((host, porta))
         if(conexao == 0):
-            print(green+'Porta {} esta aberta.'.format(porta)+white)
+            servico = socket.getservbyport(porta)
+            print(green+'Porta {} esta aberta. Servico: {}'.format(porta, servico)+white)
         else:
             print(falha+'Porta {} esta fechada.'.format(porta)+white)
     except:
